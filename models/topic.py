@@ -12,7 +12,7 @@ class Topic(db.Model, ModelMixin):
     content = db.Column(db.String(1000))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     node_id = db.Column(db.Integer, db.ForeignKey('nodes.id'))
-    created_time = db.Column(db.String(), default=0)
+    created_time = db.Column(db.String(20), default=0)
 
     # has relationship with comments
     comments = db.relationship('Comment', backref="topic")
