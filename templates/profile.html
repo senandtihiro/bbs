@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/pure-min.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <title>个人资料</title>
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+      .cell {
+        padding: 10px;
+        font-size: 12px;
+        line-height: 120%;
+        text-align: left;
+        border-bottom: 1px solid #e2e2e2;
+    }
+    img.avatar {
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+  }
+    </style>
+</head>
+<body>
+
+<div class="main">
+<div class="cell">
+    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tbody>
+            <tr>
+                <td width="73" valign="top" align="center"><img src="{{ u().avatar }}">
+            </tr>
+        </tbody>
+        <!--<tbody><tr>-->
+            <!--{% if user.avatar %}-->
+                <!--<td width="73" valign="top" align="center"><img src="{{ user.avatar }}">-->
+            <!--&lt;!&ndash;{% else %}&ndash;&gt;-->
+                <!--&lt;!&ndash;<td width="73" valign="top" align="center"><img class="bbs-user-avatar"  src="/static/img/sen.jpg">&ndash;&gt;-->
+            <!--{% endif %}-->
+            <!--<td width="10"></td>-->
+            <!--<td width="auto" valign="top" align="left">-->
+                <!--<div class="fr">-->
+
+
+
+                <!--</div>-->
+
+
+
+                <!--&lt;!&ndash;<div class="sep10"></div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<span class="gray"> &nbsp; V2EX 第 194307 号会员，加入于 2016-10-01 20:36:29 +08:00，今日活跃度排名 <a href="/top/dau">616</a></span>&ndash;&gt;-->
+
+            <!--</td>-->
+        <!--</tr>-->
+    </tbody></table>
+    <div class="sep5"></div>
+</div>
+
+  <!--<div class="head">-->
+    <!--<div class="left title">郁荷</div>-->
+    <!--<div class="right">-->
+      <!--<span><a href="/blog">郁荷的博客</a></span>-->
+      <!--<span><a href="/weibo">微博</a></span>-->
+      <!--<span><a href="/profile">个人资料</a></span>-->
+    <!--</div>-->
+  <!--</div>-->
+
+
+<div class="background">
+  <div class="content clearfix profile">
+    <div class="box profile-box">
+      <div>
+          用户id：{{ user.id }}
+          用户名： {{ user.username }}
+      </div>
+      <div>
+        <form action="/user/update_password" method="post">
+          密码：
+          <input name="password" value="{{ user.password }}">
+          <button>修改密码</button>
+        </form>
+      </div>
+      <div>
+        <form action="/user/upload_avatar" method="post" enctype="multipart/form-data">
+          头像：
+          <input type="file" name="file" style="width:400px;">
+          <button type="submit" value="Upload">上传头像</button>
+        </form>
+      </div>
+
+      <div>
+        头像预览：
+        <div >
+          大<img src="ahe.jpg" class="avatar-l">
+          中<img src="{{ user.avatar }}" class="avatar">
+          小<img src="{{ user.avatar }}" class="avatar-s">
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</div>
+</body>
+</html>

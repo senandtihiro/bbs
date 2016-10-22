@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ topic.title }}
+{% endblock %}
+
+{% block content %}
+this is topic.html
+    <div class="">
+        当前话题所属板块：<a href="{{url_for('node.showSinglePage', id=topic.node.id)}}">{{ topic.node.name }}</a>
+    </div>
+    <div>
+        当前话题标题：<h1>{{ topic.title }}</h1>
+        <div>
+        当前话题内容：<p>{{ topic.content}}</p>
+        </div>
+
+    </div>
+
+    <div class="bbs-comments">
+        针对当前话题的所有评论：
+        {% for c in topic.comments %}
+        <div>
+            {{ c.content }}
+        </div>
+        {% endfor %}
+    </div>
+
+    <div>
+        <form action="{{ url_for('comment.add') }}" method="post">
+            <input type="hidden" name="topic_id" value="{{ topic.id }}">
+            <textarea name="content"></textarea>
+            <button>发表回复</button>
+        </form>
+    </div>
+{% endblock %}

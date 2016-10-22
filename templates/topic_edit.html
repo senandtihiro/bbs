@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+    编辑新的话题
+{% endblock %}
+
+{% block css %}
+<style>
+    .topic {
+
+    }
+</<style>
+
+{% endblock %}
+
+{% block content %}
+this is topic_edit.html
+    <form action="{{ url_for('.update', id=topic.id) }}" method="post">
+        <input type="text" class="topic" name="topic_title" value="{{ topic.title }}"><br>
+        <textarea type="text" class="topic" name="topic_content" rows="10" value="{{ topic.content }}"></textarea>
+        <br>
+        <button>更新</button>
+    </form>
+{% endblock %}
+
+
+{% block sidebar %}
+    <h1>hello </h1>
+    <a href="/node/new">发布新帖子</a>
+{% endblock %}
+

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}
+    发帖
+
+{% endblock %}
+{% block css %}
+<style>
+    .he-line-h {
+      height: 1px;
+      background: lightgray;
+      margin: 15px 5px;
+    }
+
+   .bbs-nodes {
+        height: 60px;
+        line-height:60px;
+        padding: 5px;
+        font-size: 20px;
+        font-style: initial;
+        font-family: cursive;
+    }
+
+   .bbs-titles {
+
+        font-family: -webkit-pictograph;
+        font-size: 20px;
+        font-style: inherit;
+
+    }
+
+   .bbs-title{
+    height: 30px;
+    padding:5px;
+    border-top: black solid thin;
+
+   }
+
+</style>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
+{% block content %}
+this is node1.html
+    <div>
+    当前板块：{{ node.name }}
+    </div>
+当前板块下的所有话题：
+    <div class="bbs-titles">
+    {% for t in node.topics %}
+        <div class="bbs-title">
+            <a href="{{ url_for('topic.show', id=t.id)}}">{{ t.title }}</a>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
+
+
+

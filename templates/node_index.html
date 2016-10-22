@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+    nodes
+{% endblock %}
+
+{% block content %}
+this is node_index.html<br>
+    {% for node in node_list %}
+    <div>
+        <span>
+            {{ node.id }} : <a href="{{ url_for('.showSinglePage', id=node.id) }}">{{ node.name }}</a>
+            <a href="{{ url_for('.edit', id=node.id) }}">修改</a>
+            <a href="{{ url_for('.delete', id=node.id) }}">删除</a>
+        </span>
+    </div>
+    {% endfor %}
+{% endblock %}
+
+
+

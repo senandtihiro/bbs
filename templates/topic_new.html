@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}
+    发布新话题
+{% endblock %}
+
+{% block css %}
+<style>
+    .cell {
+        padding: 10px;
+        font-size: 12px;
+        line-height: 120%;
+        text-align: left;
+    }
+    .msl {
+        width: 100%;
+        border: none;
+        resize: none;
+        outline: none;
+        font-size: 14px;
+        line-height: 20px;
+        background-color: white;
+        padding: 10px;
+        font-family: 'Helvetica Neue', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+        margin: 0px;
+        box-sizing: border-box;
+    }
+    .input-nodeid, .input-topic-title {
+        margin-top: 10px;
+    }
+    .input-topic-title {
+        border: thin solid lightgray ;
+    }
+</style>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="cell">
+        请输入选择的版块
+    </div>
+    <form action="{{ url_for('.add') }}" method="post">
+        <input class="input-nodeid" type="text" name="node_id" placeholder="输入 node id">
+        <br>
+        <div class="cell">
+        主题标题
+        <!--<input type="text" name="title" placeholder="输入 title">-->
+        <textarea class="msl input-topic-title" rows="1" maxlength="120" id="topic_title" name="title" autofocus="autofocus" placeholder="请输入主题标题"></textarea>
+        <br>
+        </div>
+        <div class="cell">
+        正文
+        </div>
+        <textarea cols="90" rows="10" type="text" name="content" placeholder="输入 content"></textarea>
+        <br>
+        <button class="pure-button pure-button-primary sub">发布主题</button>
+    </form>
+{% endblock %}
+
+
+

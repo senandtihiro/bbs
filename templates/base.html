@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bbs.css') }}">
+    <link rel="stylesheet" href="/static/css/pure-min.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/bbs.css">
+    {% block css %}{% endblock %}
+
+    <script src="/static/js/jquery-3.0.0.min.js"></script>
+    {% block script %}{% endblock %}
+</head>
+<body>
+    <div class="bbs-top">
+        <a class="gua-nav-link" href="/node/show">首页</a>
+        <input type="text" class="bbs-icon-input">
+        <nav class="bbs-menu">
+            <a class="gua-nav-link gua-active" href="/user/profile">个人主页</a>
+            <a class="gua-nav-link" href="/user">注册</a>
+            <a class="gua-nav-link" href="/user">登录</a>
+            <a class="gua-nav-link" href="/">博客</a>
+            <a class="gua-nav-link" href="/weibo">微博</a>
+            <a class="gua-nav-link" href="/user/logout">登出</a>
+            <!--<a class="gua-nav-link" href="/weibo">微博</a>-->
+        </nav>
+    </div>
+    <div class="bbs-main">
+        <div class="bbs-content bbs-box">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <div class="bbs-sidebar bbs-box">
+            <!--<a href="/topic/new">发布新话题</a>-->
+            <!--<div class="bbs-box bbs-sidebar">-->
+                <div class="bbs-sidebar-container">
+                    <div class="bbs-sidebar-user">
+
+                        {% if u() %}
+                        <!--<img class="bbs-user-avatar"  src="{{ u().get_avatar(size=256) }}">-->
+                        <a class="bbs-user-name" href="/user/profile">
+                            {{ u().username }}
+                        </a>
+                        {% else %}
+                            哈喽，游客！
+                        {% endif %}
+                    </div>
+                    <div>
+                        <embed width="180" height="180" align="center" wmode="transparent" quality="high" src="http://images.cnblogs.com/cnblogs_com/csharp/clock.swf" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash">
+                        <embed width="160" height="70" align="center" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" allowscriptaccess="always" name="honehoneclock" bgcolor="#ffffff" quality="high" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_tr.swf" wmode="transparent">
+                    </div>
+
+
+                    <div class="he-line-h">
+
+                    </div>
+                    <div class="bbs-favorite-container">
+                        <div class="bbs-favorite">
+                            <div class="bbs-text-default">
+                                <a>0</a>
+                            </div>
+                            <div class="bbs-text-default">
+                                <a>节点收藏</a>
+                            </div>
+                        </div>
+                        <div class="he-line-v">
+                        </div>
+                        <div class="bbs-favorite">
+                            <div class="bbs-text-default">
+                                <a>0</a>
+                            </div>
+                            <div class="bbs-text-default">
+                                <a>主题收藏</a>
+                            </div>
+                        </div>
+                        <div class="he-line-v">
+                        </div>
+                        <div class="bbs-favorite">
+                            <div class="bbs-text-default">
+                                <a>0</a>
+                            </div>
+                            <div class="bbs-text-default">
+                                <a>特别关注</a>
+                            </div>
+                        </div>
+                        <!--<div class="bbs-line1"></div>-->
+                        <!--<div class="bbs-favorite">-->
+                            <!--<p class="bbs-text-default">0</p>-->
+                            <!--<a class="bbs-text-default" href="#">主题收藏</a>-->
+                        <!--</div>-->
+                        <!--<div class="bbs-line1"></div>-->
+                        <!--<div class="bbs-favorite">-->
+                            <!--<p class="bbs-text-default">0</p>-->
+                            <!--<a class="bbs-text-default" href="#">特别关注</a>-->
+                        <!--</div>-->
+                    </div>
+                    <div class="he-line-h">
+
+                    </div>
+                </div>
+                <div class="bbs-sidebar-cell">
+                    <div class="bbs-line2"></div>
+                </div>
+                <div class="bbs-sidebar-cell">
+                    <img class="bbs-add" src="/static/img/add.png">
+                    <a class="bbs-a-gray1" href="/topic/new">创作新主题</a>
+                </div>
+                <div class="bbs-sidebar-cell">
+                    {% if u().is_administrator %}
+                    <img class="bbs-add" src="/static/img/add.png">
+                    <a class="bbs-a-gray1" href="/node/new">
+                        开启新版块
+                    </a>
+                    {% endif %}
+                </div>
+                <div class="bbs-sidebar-cell">
+                    <a class="bbs-a-gray1" href="#">0 条未读提醒</a>
+                </div>
+</div>
+            {% block sidebar %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <div class="bbs-bottom">
+        <div class="bbs-bottom-content bbs-content-size">
+            <div class="bbs-bottom-nav">
+                <a href="#">关于</a>
+                <span>&nbsp;·&nbsp;</span>
+                <a href="#">FAQ</a>
+                <span>&nbsp;·&nbsp;</span>
+                <a href="#">鸣谢</a>
+                <span>&nbsp;·&nbsp;</span>
+                <a href="#">7人在线</a>
+            </div>
+            <div class="bbs-bottom-about">
+                创意工作者们的社区<br>World is powered by solitude
+            </div>
+        </div>
+    </div>
+</body>
+</html>

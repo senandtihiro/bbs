@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}
+    发帖
+
+
+{% endblock %}
+{% block css %}
+<style>
+    .he-line-h {
+      height: 1px;
+      background: lightgray;
+      margin: 15px 5px;
+    }
+
+   .bbs-nodes {
+        height: 60px;
+        line-height:60px;
+        padding: 5px;
+        font-size: 20px;
+        font-style: initial;
+        font-family: cursive;
+        border: thin solid lightgray;
+        border-radius: 10px;
+        margin-bottom: 5px;
+    }
+
+   .bbs-titles {
+        font-family: -webkit-pictograph;
+        font-size: 20px;
+        font-style: inherit;
+        border: thin solid lightgray;
+        border-radius: 10px;
+    }
+
+   .bbs-item {
+    height: 50px;
+    padding: 5px;
+    border-bottom: black dashed thin;
+}
+   .cell {
+      padding: 10px;
+      line-height: 120%;
+      border-bottom: 1px solid #e2e2e2;
+}
+.bbs-time {
+    float: left;
+    font-size: smaller;
+}
+.he-topic-views {
+    display: inline-block;
+    float: right;
+    font-size: 13px;
+    border-radius: 5px;
+    background: #99D65A;
+    padding: 4px;
+    color: white;
+}
+</style>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="bbs-nodes">
+        {% for node in node_list %}
+            <a href="{{ url_for('node.showSinglePage', id=node.id)}}" >{{ node.name }}</a>&nbsp;&nbsp;
+             <!--<a href="{{ url_for('node.show', id=node.id)}}" >{{ node.name }}</a>&nbsp;&nbsp;-->
+
+        {% endfor %}
+    </div>
+    <div class="bbs-titles cell">
+    {% for t in node.topics %}
+        <div class="bbs-item">
+            <div class="bbs-title">
+                <a href="{{ url_for('topic.show', id=t.id)}}">{{ t.title }}</a>
+                <div class="he-topic-views">
+                    评论数目：（{{ t.comments_num }}）
+                </div>
+            </div>
+            <div class="bbs-time">
+                <span class="span-margin">{{ t.created_time }}</span>
+                <span class="span-margin">created by: {{ t.user.username }}</span>
+            </div>
+
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
+
+
+

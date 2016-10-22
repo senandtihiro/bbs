@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+    编辑新的板块
+{% endblock %}
+
+{% block content %}
+this is node_new.html
+    <form action="{{ url_for('.update', id=node.id) }}" method="post">
+        <input type="text" name="node_name" value="{{ node.name }}">
+        <button class="pure-button pure-button-primary sub">更新</button>
+    </form>
+{% endblock %}
+
+
+{% block sidebar %}
+    <h1>hello </h1>
+    <a href="/node/new">发布新帖子</a>
+{% endblock %}
+

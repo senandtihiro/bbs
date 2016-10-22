@@ -1,0 +1,137 @@
+body {
+    margin: 0;
+    background: #e6e6e6;
+    font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+}
+
+
+input.bbs-icon-input {
+            /* 设置外观 */
+            border: 1.5px solid #d5d5d5;
+            margin: 0px 0px 0px 20px !important;
+            font-size: 20px;
+            /* 这个缩写的含义请在浏览器中用检查器看 */
+            background: url(/static/img/searchicon.png) no-repeat scroll 4px;
+            /* 下面这样可以让图片居中 */
+            height: 30px;
+            padding-left: 30px;
+        }
+
+/* top bar */
+.bbs-top {
+    background: white;
+    width: 100%;
+    height: 42px;
+}
+.bbs-menu {
+    float: right;
+    font-size: 0;
+}
+.gua-nav-link {
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 16px;
+}
+.gua-nav-link:hover {
+    background: red;
+}
+.bbs-main {
+    display: flex;
+    margin: 10px auto;
+    text-align: center;
+    min-width: 900px;
+    max-width: 1200px;
+
+}
+.bbs-box {
+    border-radius: 3px;
+    background:white;
+}
+.bbs-content {
+    padding:5px;
+    margin-left:10px;
+    min-width: 600px;
+    max-width: 900px;
+    text-align: left;
+}
+.bbs-sidebar {
+    padding:5px;
+    margin-left:5px;
+    width: 280px;
+    text-align: left;
+}
+/* 底部 */
+.bbs-bottom {
+    position: fixed;
+    background: white;
+    padding-left: 10px;
+    bottom: 0px;
+    width: 100%;
+    border-top: 1px solid lightgray;
+}
+
+.bbs-sidebar-user {
+    display:flex;
+}
+.bbs-user-avatar {
+    display: black;
+    max-width: 48px;
+    max-height: 48px;
+}
+
+.bbs-user-name {
+    line-height: 48px;
+    padding: 5px;
+    display: block;
+    text-align: -webkit-left;
+    vertical-align: center;
+}
+
+.bbs-sidebar-container {
+    padding: 10px;
+    margin: 5px;
+}
+.bbs-favorite-container {
+    display: flex;
+}
+.bbs-favorite {
+    text-align: center;
+}
+.bbs-sidebar-cell {
+    display: flex;
+}
+.bbs-add {
+    display: black;
+    width: 38px;
+    height: 38px;
+}
+.bbs-a-gray1 {
+    padding: 5px;
+    display: block;
+    line-height: 38px;
+    text-align: -webkit-left;
+    vertical-align: center;
+}
+
+.cell {
+        padding: 10px;
+        font-size: 16px;
+        line-height: 120%;
+        text-align: left;
+        border-bottom: 1px solid #e2e2e2;
+    }
+    .msl {
+    width: 100%;
+    border: none;
+    resize: none;
+    background-color: #f9f9f9;
+    outline: none;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 10px;
+    font-family: 'Helvetica Neue', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+    margin: 0px;
+    box-sizing: border-box;
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/pure-min.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <!--<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>-->
+    <script src="/static/js/jquery-3.0.0.min.js"></script>
+    <script src="/static/js/api.js"></script>
+    <script type="text/javascript" src="/static/js/blog.js"></script>
+    <title>阿荷和她的朋友们</title>
+</head>
+<body>
+  <div class="head">
+    <div class="left title">阿荷的朋友圈</div>
+    <div class="right">
+      <span><a class="gua-nav-link" href="/node/show">首页</a></span>
+         <span><a class="gua-nav-link gua-active" href="/user/profile">个人主页</a></span>
+         <span><a class="gua-nav-link" href="/user">注册</a></span>
+         <span><a class="gua-nav-link" href="/user">登录</a></span>
+         <span><a class="gua-nav-link" href="/">博客</a></span>
+         <span><a class="gua-nav-link" href="/weibo">微博</a></span>
+    </div>
+  </div>
+  <div class="background">
+    <div class="height-20"></div>
+    <div class="container clearfix">
+
+      <div class="right-panel right">
+        <div class="box name-board">
+          <img class="avatar-l name-board-avatar" src="/static/img/sen.jpg" alt="" />
+          <div class="personal-des">
+            Hello, I am ahe
+          </div>
+          <div class="personal-des">
+            Let's share wonderful things here
+          </div>
+          <div class="personal-des">
+            Please write some comments
+          </div>
+          <div class="personal-des">
+            Have a nice day!
+          </div>
+          {% if u().is_administrator %}
+          <div class="personal-des">
+            <span><a class="gua-nav-link" href="/new">发布新博客</a></span>
+          </div>
+          {% endif %}
+        </div>
+        <div class="height-20"></div>
+        <div class="box link-board">
+          <pre class="poem">
+Shine bright like a diamond
+Shine bright like a diamond
+Find light in the beautiful sea
+I chose to be happy
+You and i  you and i
+We are like diamonds in the sky
+You're shooting star i see
+A vision of ecstasy
+When you hold me,  i'm alive
+We're like diamonds in the sky
+I saw the light inside your eyes
+Shine bright like a diamond
+Shine bright like a diamond
+Shine bright like a diamond
+          </pre>
+        </div>
+      </div>
+
+
+
+      <div class="main-panel">
+
+        <div class="box">
+          {% for b in blogs %}
+            <div class="cell item">
+              <div class="blog-head">
+                <span class="blog-title">{{ b.title }}</span>
+                <span class="blog-name">by:{{ u().username }}</span>
+                <span class="blog-time">{{ b.created_time }}</span>
+              </div>
+              <pre class="blog-content">{{ b.content }}</pre>
+              <div class="blog-foot">
+                <a href="#" class="blog-com">评论({{ b.comments_num }})</a>
+              </div>
+              <div class="blog-comment hide">
+                <div class="comment-list">
+                {% for c in b.comments %}
+                  <div class="cell-inner item">
+                    <span class="comment">{{ c.comment }}</span>
+                    <span class="right  span-margin">{{ c.created_time }}</span>&nbsp;&nbsp;
+                    <span class="right  span-margin">by:{{ c.name }}</span>
+                    <!--<span class="time right span-margin">{{ c.created_time }}</span>-->
+                    <!--<span class="name right span-margin">by:{{ c.name }}</span>-->
+                  </div>
+                {% endfor %}
+                </div>
+                <!-- <form action="/blog/comment" method="post" class="comment-form"> -->
+                <div class="comment-form">
+                  <input type="hidden" name="blog_id" class="comment-blog_id" value="{{ b.id }}">
+                  <input name="comment" class="left m comment-content" placeholder="Comment">
+                  <button class="blog-comment-add">发表</button>
+                </div>
+                <!-- </form> -->
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="height-20"></div>
+
+      </div>
+
+
+
+    </div>
+  </div>
+</body>
+</html>
