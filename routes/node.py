@@ -5,7 +5,7 @@ from routes import *
 from routes.user import current_user
 
 # for decorators
-from functools import wrapse
+from functools import wraps
 
 main = Blueprint('node', __name__)
 
