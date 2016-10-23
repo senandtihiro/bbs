@@ -5,7 +5,7 @@ from routes import *
 from routes.user import current_user
 
 # for decorators
-from functools import wraps
+from functools import wrapse
 
 main = Blueprint('node', __name__)
 
@@ -55,7 +55,6 @@ def show():
     for t in node.topics:
         t.comments_num = len(t.comments)
         print('t.comments',t.comments)
-    print('topic.comments_num:', t.comments_num)
     return render_template('node_all.html', node_list=ms, node=node)
 
 @main.route('/new', methods=['GET', 'POST'])
