@@ -87,7 +87,7 @@ api.weiboComment = function(form, response) {
 
 api.blogComment = function(form, response) {
     // 更新一条微博  response 是回调函数
-    var url = '/api/blog/comment'
+    var url = '/api/comment'
     api.post(url, form, response)
 }
 // 用户 API

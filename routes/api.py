@@ -195,7 +195,7 @@ def weibo_comment():
     return json.dumps(r, ensure_ascii=False)
 
 
-@main.route('/blog/comment', methods=['GET','POST'])
+@main.route('/comment', methods=['GET','POST'])
 def comment():
     print('api.blog.comment was called')
     form = request.form
