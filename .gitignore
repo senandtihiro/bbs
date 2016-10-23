@@ -1,6 +1,9 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea/*
 *.pyc
+*.bak
+__pycache__/*
+migrations/*
 
 sql迁移/homework_6.sqlite
 

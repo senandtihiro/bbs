@@ -23,8 +23,7 @@ def login_view():
     u = current_user()
     # print('u:', u)
     if u is not None:
-        return redirect('/node/show')
-        # return render_template('node.html')
+        return redirect('/')
     return render_template('user_login.html')
 
 @main.route('/register_view')
