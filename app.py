@@ -127,7 +127,7 @@ manager = Manager(app)
 
 
 def register_routes(app):
-    from routes.todo import main as routes_todo
+    # from routes.todo import main as routes_todo
     from routes.node import main as routes_node
     from routes.topic import main as routes_topic
     from routes.user import main as routes_user
@@ -145,7 +145,7 @@ def register_routes(app):
     app.register_blueprint(routes_weibo, url_prefix='/weibo')
     app.register_blueprint(routes_comment, url_prefix='/comment')
     app.register_blueprint(routes_api, url_prefix='/api')
-    app.register_blueprint(routes_todo, url_prefix='/todo')
+    # app.register_blueprint(routes_todo, url_prefix='/todo')
 
 def configure_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
