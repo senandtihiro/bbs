@@ -3,19 +3,14 @@ from routes import *
 from app import UPLOAD_FOLDER
 from flask import Flask
 from functools import wraps
+
+# from routes.api import login_required
 # from app import UPLOAD_FOLDER
 
 main = Blueprint('user', __name__)
 
 pyid = id
 Model = User
-
-def current_user():
-    uid = session.get('user_id')
-    if uid is not None:
-        u = User.query.get(uid)
-        # print('user', u)
-        return u
 
 
 @main.route('/')
@@ -26,11 +21,13 @@ def login_view():
         return redirect('/')
     return render_template('user_login.html')
 
+
 @main.route('/register_view')
 def register_view():
     return render_template('user_register.html')
 
-@main.route('/register', methods=['GET','POST'])
+
+@main.route('/register', methods=['GET', 'POST'])
 def register():
     print('register was called')
     form = request.form
@@ -38,7 +35,7 @@ def register():
     if u.valid():
         print('u is valid')
         # u.save()
-        print('u.username',u.username)
+        print('u.username', u.username)
         if u.username == 'ahe':
             u.is_administrator = True
             print('u.is_administrator', u.is_administrator)
@@ -95,25 +92,6 @@ def update_password():
     return redirect('/user/profile')
 
 
-# @main.route('/upload_avatar', methods=['POST'])
-# def upload_avatar():
-#     u = current_user()
-#     file = request.files['file']
-#     if file:
-#         filename = u.username + file.filename
-#         file.save(os.path.join(UPLOAD_FOLDER, filename))
-#     # return redirect(url_for('uploaded_file', filename=filename))
-#     return redirect(url_for('update_avatar', filename=filename))
-
-# @main.route('/uploads/<filename>')
-# def uploaded_file(filename):
-#     print('uploaded_file was called', uploaded_file)
-#     return send_from_directory(UPLOAD_FOLDER, filename)
-
-
-# @main.route('/update_avatar/<filename>')
-
-
 @main.route('/upload_avatar', methods=['POST'])
 def upload_avatar():
     print('upload_avatar was called')
@@ -134,16 +112,11 @@ def update_avatar(filename):
     return redirect('/user/profile')
 
 
-
-
-
 @main.route('/profile', methods=['GET'])
-# @login_required
+@login_required
 def profile():
     print('frofile was called')
     u = current_user()
     if u is not None:
         # print('profile', u.id, u.username, u.password)
         return render_template('profile.html', user=u)
-    else:
-        abort(401)

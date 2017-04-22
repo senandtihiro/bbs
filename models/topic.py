@@ -13,6 +13,7 @@ class Topic(db.Model, ModelMixin):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     node_id = db.Column(db.Integer, db.ForeignKey('nodes.id'))
     created_time = db.Column(db.String(20), default=0)
+    view = db.Column(db.Integer)
 
     # has relationship with comments
     comments = db.relationship('Comment', backref="topic")
@@ -26,6 +27,7 @@ class Topic(db.Model, ModelMixin):
         self.title = form.get('title', '')
         self.content = form.get('content', '')
         self.comments_num = 0
+        self.view = 0
         # self.user_id = current_user.id
 
 

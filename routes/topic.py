@@ -36,8 +36,12 @@ def login_required(f):
 
 @main.route('/<int:id>')
 def index(id):
+    print('topic/index was called')
     # ms = Model.query.all()
     m = Model.query.get(id)
+    print('debug topic:', m)
+    m.view += 1
+    m.save()
     # node = Node.query.get(m.node_id)
     return render_template('topic_index.html', topic=m)
 
@@ -68,11 +72,14 @@ def new():
 @main.route('/<int:id>')
 def show(id):
     print('topic.show was called')
+    # ts为所有的topics
     ts = Model.query.all()
+
     # t = Model.query.get(id)
     # 有了关系之后关联的字段就不必要给出来了
     # node = Node.query.get(t.node_id)
-    return render_template('topic.html', topic_list=ts)
+    return render_template('topic.html')
+    # return render_template('topic.html', topic_list=ts)
 
 # @main.route('/')
 # def show():

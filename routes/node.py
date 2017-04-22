@@ -52,10 +52,13 @@ def show():
     print('执行到node/show目录')
     ms = Model.query.all()
     node = Node.query.first()
-    for t in node.topics:
-        t.comments_num = len(t.comments)
-        print('t.comments',t.comments)
+    if node is not None:
+        for t in node.topics:
+            t.comments_num = len(t.comments)
+            print('t.comments',t.comments)
     return render_template('node_all.html', node_list=ms, node=node)
+    # else:
+    #     abort(404)
 
 @main.route('/new', methods=['GET', 'POST'])
 def new():
@@ -72,6 +75,7 @@ def new():
 
 @main.route('/showSinglePage/<int:id>')
 def showSinglePage(id):
+    print('showSinglePage was called')
     nodes = Model.query.all()
     node = Model.query.get(id)
     print('node',node)
