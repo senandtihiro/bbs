@@ -5,7 +5,7 @@ from os.path import abspath
 from os.path import dirname
 import app as bbs
 
-app = bbs.configure_app()
+app = bbs.configured_app()
 # sys.path.insert(0, abspath(dirname(__file__)))
 # application = app.app
 
