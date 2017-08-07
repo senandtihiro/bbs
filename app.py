@@ -8,7 +8,6 @@ from models import db
 # 如果不 import 那么无法迁移
 # 这是 SQLAlchemy 的机制
 from flask import render_template
-from flask_restless import APIManager
 
 
 app = Flask(__name__)
@@ -18,7 +17,6 @@ db_path = 'mysql://root:111111@localhost/bbs'
 UPLOAD_FOLDER = 'static/avatar/'
 manager = Manager(app)
 
-restless = APIManager(app, flask_sqlalchemy_db=db)
 # login_manager = LoginManager()
 # login_manager.login_view = 'user.login'
 
