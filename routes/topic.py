@@ -81,6 +81,32 @@ def show(id):
     return render_template('topic.html')
     # return render_template('topic.html', topic_list=ts)
 
+# @main.route('/show')
+# def show_all():
+#     print('topic.show was called')
+#     # ts为所有的topics
+#     ts = Model.query.all()
+#     count = len(ts)
+#     print('total topic number:', count)
+#     # t = Model.query.get(id)
+#     # 有了关系之后关联的字段就不必要给出来了
+#     # node = Node.query.get(t.node_id)
+#     # return render_template('topic_all.html', ts=ts)
+#     return render_template('topic_all.html', topics=ts)
+
+# @main.route('/show')
+# def show_all():
+#     print('topic.show was called')
+#     # ts为所有的topics
+#     ts = Model.query.all()
+#     count = len(ts)
+#     print('total topic number:', count)
+#     # t = Model.query.get(id)
+#     # 有了关系之后关联的字段就不必要给出来了
+#     # node = Node.query.get(t.node_id)
+#     # return render_template('topic_all.html', ts=ts)
+#     return render_template('topic_all.html', topics=ts)
+
 # @main.route('/')
 # def show():
 #     print('topic.show was called')

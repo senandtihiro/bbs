@@ -57,8 +57,18 @@ def show():
             t.comments_num = len(t.comments)
             print('t.comments',t.comments)
     return render_template('node_all.html', node_list=ms, node=node)
-    # else:
-    #     abort(404)
+
+
+# @main.route('/show')
+# def show():
+#     print('执行到node/show目录')
+#     ms = Model.query.all()
+#     node = Node.query.first()
+#     if node is not None:
+#         for t in node.topics:
+#             t.comments_num = len(t.comments)
+#             print('t.comments',t.comments)
+#     return render_template('node_all.html', node_list=ms, node=node)
 
 @main.route('/new', methods=['GET', 'POST'])
 def new():
@@ -90,6 +100,7 @@ def showSinglePage(id):
 
 @main.route('/showAllPages')
 def showAllPages():
+    print('showAllPages was called')
     nodes = Node.query.all()
     return render_template('node_all.html', nodes=nodes)
 

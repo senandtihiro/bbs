@@ -9,7 +9,8 @@ class User(db.Model, ModelMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(12))
     password = db.Column(db.String(12))
-    avatar = db.Column(db.String(1000))
+    avatar = db.Column(db.String(1000), default='/static/avatar/default.png')
+    created_time = db.Column(db.String(20), default=0)
     # email = db.Column(db.String())
     is_administrator = db.Column(db.Boolean, default=False, index=True)
     nodes = db.relationship('Node', backref='user')
@@ -17,6 +18,8 @@ class User(db.Model, ModelMixin):
     comments = db.relationship('Comment', backref='user')
     blog_comments = db.relationship('BlogComment', backref='user')
     weibo_comments = db.relationship('WeiboComment', backref='user')
+    follower_count = db.Column(db.Integer)
+    # follower =
 
 
     # @password.setter
@@ -32,6 +35,12 @@ class User(db.Model, ModelMixin):
         super(User, self).__init__()
         self.username = form.get('username', '')
         self.password = form.get('password', '')
+        format = '%Y/%m/%d %H:%M:%S'
+        v = int(time.time()) + 3600 * 8
+        valuegmt = time.gmtime(v)
+        dt = time.strftime(format, valuegmt)
+        self.created_time = dt
+        self.follower_count = 0
 
 
     # def get_avatar(self, size=100, default='identicon', rating='g'):
@@ -74,9 +83,19 @@ class User(db.Model, ModelMixin):
     #         self.avatar = f.read()
     #     return self.avatar
 
-    def change_avatar(self, filename):
-        self.avatar = send_from_directory('uploads/', filename)
-        self.save()
+    # def change_avatar(self, filename):
+    #     self.avatar = send_from_directory('uploads/', filename)
+    #     self.save()
+    def change_avatar(self, avatar):
+         print('change_avatar was called')
+         print('length of avatar > 2?', len(avatar))
+         print('change_avatar was called')
+         if len(avatar) > 2:
+             self.avatar = avatar
+             self.save()
+             return True
+         else:
+             return False
 
     # def valid_login(self, u):
     #     if u is not None:

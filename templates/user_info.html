@@ -1,0 +1,234 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>user_info.html</title>-->
+<!--</head>-->
+<!--<body>-->
+    <!--user_info.html was invoked!-->
+    <!--user_id = {{ user.id }}-->
+    <!--<br>-->
+    <!--all topics:<br>-->
+    <!--{{ topics }}-->
+
+<!--</body>-->
+<!--</html>-->
+
+{% extends "base.html" %}
+
+{% block title %}
+    发帖
+
+
+{% endblock %}
+{% block css %}
+<style>
+    .he-line-h {
+      height: 1px;
+      background: lightgray;
+      margin: 15px 5px;
+    }
+
+   .bbs-nodes {
+        height: 60px;
+        line-height:60px;
+        padding: 5px;
+        font-size: 20px;
+        font-style: initial;
+        font-family: cursive;
+        border: thin solid lightgray;
+        border-radius: 10px;
+        margin-bottom: 5px;
+    }
+
+   .bbs-titles {
+        font-family: -webkit-pictograph;
+        font-size: 20px;
+        font-style: inherit;
+        border: thin solid lightgray;
+        border-radius: 10px;
+    }
+
+   .bbs-item {
+    height: 50px;
+    padding: 5px;
+    border-bottom: black dashed thin;
+}
+.bigger {
+    font-size: 16px;
+}
+.cell {
+   padding: 10px;
+   line-height: 120%;
+   border-bottom: 1px solid #e2e2e2;
+}
+.bbs-time {
+    float: left;
+    font-size: smaller;
+}
+.he-topic-views {
+    display: inline-block;
+    float: right;
+    font-size: 13px;
+    border-radius: 5px;
+    background: #99D65A;
+    padding: 4px;
+    color: white;
+}
+.info_cell {
+    padding: 10px;
+    font-size: 12px;
+    line-height: 120%;
+    text-align: left;
+    border-bottom: 1px solid #e2e2e2;
+}
+.sep5 {
+    height: 5px;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+.sep10 {
+    height: 10px;
+}
+.special.button:hover {
+    background-color: #ffdf00;
+    color: #402112;
+    text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    -moz-box-shadow: 0px 1px 2px rgba(233, 175, 0, 0.5);
+    border: 1px solid rgba(200, 150, 0, 1);
+}
+h1 {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 150%;
+    margin: 0px 0px 10px 0px;
+    padding: 0px;
+}
+img.avatar {
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+img[Attributes Style] {
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+}
+button {
+    align-items: flex-start;
+    text-align: center;
+    cursor: default;
+    color: buttontext;
+    background-color: buttonface;
+    box-sizing: border-box;
+    padding: 2px 6px 3px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonface;
+    border-image: initial;
+}
+table[Attributes Style] {
+    -webkit-border-horizontal-spacing: 0px;
+    -webkit-border-vertical-spacing: 0px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    width: 100%;
+}
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
+}
+input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
+    align-items: flex-start;
+    text-align: center;
+    cursor: default;
+    color: buttontext;
+    background-color: buttonface;
+    box-sizing: border-box;
+    padding: 2px 6px 3px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonface;
+    border-image: initial;
+}
+.fr {
+    float: right;
+    text-align: right;
+}
+</style>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="info_cell">
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tbody>
+                <tr>
+                    <td width="73" valign="top" align="center"><img src="{{ user.avatar }}" class="avatar" border="0" align="default"><div class="sep10"></div></td>
+                    <td width="10"></td>
+                    <td width="auto" valign="top" align="left">
+                        <div class="fr">
+                            <input type="button" value="加入特别关注" onclick="if (confirm('确认要开始关注 {{ user.username }}？')) { location.href = '/user/follow/' + {{ user.id}} + '?once=' + {{ u().id }}; }" class="super special button">
+                            <!--window.location.href = "Home/MyActionResult?Page=data" + PostData;-->
+                            <!--location.href = "Home/MyActionResult?Page=data&PostData=" + PostData;-->
+                            <!--<input type="button" value="加入特别关注" onclick="if (confirm('确认要开始关注 {{ user.username }}？')) { location.href = '/follow/<int:id>?once=18458'; }" class="super special button">-->
+                            <div class="sep10"></div>
+                            <input type="button" value="Block" onclick="if (confirm('确认要屏蔽 FrankFang128？')) { location.href = '/block/18869?t=1475325389'; }" class="super normal button">
+                        </div>
+                        <h1 style="margin-bottom: 5px;">{{ user.username }}</h1>
+                        <span class="bigger"></span>
+                        <div class="sep10"></div>
+                        <span class="gray"> &nbsp; V2EX 第 {{ user.id }} 号会员，加入于 {{ user.created_time }}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="sep5"></div>
+    </div>
+    <div class="bbs-titles cell">
+    {% for t in topics %}
+        <div class="bbs-item">
+            <div class="bbs-title">
+                <a href="{{ url_for('topic.show', id=t.id)}}">{{ t.title }}</a>
+                <div class="he-topic-views">
+                    评论数目：（{{ t.comments_num }}）
+                </div>
+            </div>
+            <div class="bbs-time">
+                <span class="span-margin">{{ t.created_time }}</span>
+                <span class="span-margin">
+                    created by:
+                    <!--<a href="/user/profile">-->
+                    <a href="{{ url_for('user.user_info', id=t.user.id)}}">
+                            {{ t.user.username }}
+                    </a>
+                </span>
+                <!--<span class="span-margin">created by: {{ t.user.username }}</span>-->
+                <span class="span-margin">被: {{ t.view }} 人浏览</span>
+            </div>
+
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
+
+
+

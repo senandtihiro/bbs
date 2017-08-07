@@ -8,13 +8,17 @@ from models import db
 # 如果不 import 那么无法迁移
 # 这是 SQLAlchemy 的机制
 from flask import render_template
+from flask_restless import APIManager
 
 
 app = Flask(__name__)
 # db_path = 'bbs.sqlite'
 db_path = 'mysql://root:111111@localhost/bbs'
-UPLOAD_FOLDER = 'uploads/'
+# UPLOAD_FOLDER = 'uploads/'
+UPLOAD_FOLDER = 'static/avatar/'
 manager = Manager(app)
+
+restless = APIManager(app, flask_sqlalchemy_db=db)
 # login_manager = LoginManager()
 # login_manager.login_view = 'user.login'
 
@@ -28,6 +32,8 @@ def register_routes(app):
     from routes.blog import main as routes_blog
     from routes.comment import main as routes_comment
     from routes.api import main as routes_api
+    from routes.testrestless import customer_info_export_bp
+
 
     # 让用户登录页面成为首页，不加url_prefix选项
     app.register_blueprint(routes_user, url_prefix='/user')
@@ -38,6 +44,7 @@ def register_routes(app):
     app.register_blueprint(routes_weibo, url_prefix='/weibo')
     app.register_blueprint(routes_comment, url_prefix='/comment')
     app.register_blueprint(routes_api, url_prefix='/api')
+    app.register_blueprint(customer_info_export_bp, url_prefix='/rest')
     # app.register_blueprint(routes_todo, url_prefix='/todo')
 
 def configure_app():
@@ -46,7 +53,7 @@ def configure_app():
     # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{}'.format(db_path)
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     # 数据库换成mysql数据库
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:111111@localhost/bbs'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost:3306/bbs?charset=utf8'
     db.init_app(app)
     # 使用管理认证状态的扩展程序添加
     # login_manager.init_app(app)

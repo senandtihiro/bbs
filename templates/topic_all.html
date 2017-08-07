@@ -65,15 +65,8 @@
 
 
 {% block content %}
-    <div class="bbs-nodes">
-        {% for node in node_list %}
-            <a href="{{ url_for('node.showSinglePage', id=node.id)}}" >{{ node.name }}</a>&nbsp;&nbsp;
-             <!--<a href="{{ url_for('node.show', id=node.id)}}" >{{ node.name }}</a>&nbsp;&nbsp;-->
-
-        {% endfor %}
-    </div>
     <div class="bbs-titles cell">
-    {% for t in node.topics %}
+    {% for t in topics %}
         <div class="bbs-item">
             <div class="bbs-title">
                 <a href="{{ url_for('topic.show', id=t.id)}}">{{ t.title }}</a>
