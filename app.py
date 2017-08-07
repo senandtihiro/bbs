@@ -48,7 +48,7 @@ def configure_app():
     # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{}'.format(db_path)
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     # 数据库换成mysql数据库
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost:3306/bbs?charset=utf8'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:111111@localhost:3306/bbs?charset=utf8'
     db.init_app(app)
     # 使用管理认证状态的扩展程序添加
     # login_manager.init_app(app)
