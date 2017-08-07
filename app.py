@@ -32,8 +32,6 @@ def register_routes(app):
     from routes.blog import main as routes_blog
     from routes.comment import main as routes_comment
     from routes.api import main as routes_api
-    from routes.testrestless import customer_info_export_bp
-
 
     # 让用户登录页面成为首页，不加url_prefix选项
     app.register_blueprint(routes_user, url_prefix='/user')
@@ -44,7 +42,6 @@ def register_routes(app):
     app.register_blueprint(routes_weibo, url_prefix='/weibo')
     app.register_blueprint(routes_comment, url_prefix='/comment')
     app.register_blueprint(routes_api, url_prefix='/api')
-    app.register_blueprint(customer_info_export_bp, url_prefix='/rest')
     # app.register_blueprint(routes_todo, url_prefix='/todo')
 
 def configure_app():
