@@ -29,7 +29,6 @@ def register_routes(app):
     from routes.comment import main as routes_comment
     from routes.api import main as routes_api
 
-    # 让用户登录页面成为首页，不加url_prefix选项
     app.register_blueprint(routes_user, url_prefix='/user')
     app.register_blueprint(routes_node, url_prefix='/node')
     app.register_blueprint(routes_topic, url_prefix='/topic')
@@ -78,9 +77,7 @@ def server():
 
 
 def configure_manager():
-    """
-    这个函数用来配置命令行选项
-    """
+
     Migrate(app, db)
     manager.add_command('db', MigrateCommand)
 
