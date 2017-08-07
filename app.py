@@ -4,9 +4,7 @@ from flask_script import Manager
 # from flask.ext.login import LoginManager
 
 from models import db
-# 这里 import 具体的 Model 类是为了给 migrate 用
-# 如果不 import 那么无法迁移
-# 这是 SQLAlchemy 的机制
+
 from flask import render_template
 
 
@@ -47,10 +45,8 @@ def configure_app():
     app.secret_key = 'secret key'
     # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{}'.format(db_path)
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-    # 数据库换成mysql数据库
     app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:111111@localhost:3306/bbs?charset=utf8'
     db.init_app(app)
-    # 使用管理认证状态的扩展程序添加
     # login_manager.init_app(app)
     register_routes(app)
 
@@ -69,7 +65,6 @@ def error404(e):
 def error404(e):
     return render_template('410.html')
 
-# 自定义的命令行命令用来运行服务器
 @manager.command
 def server():
     print('server run')
