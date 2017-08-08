@@ -1,7 +1,6 @@
 import app as bbs
 
 app = bbs.configured_app()
-application = app.wsgifunc()
 
 """
 建立一个软连接
