@@ -11,6 +11,7 @@ from functools import wraps
 # 第一个参数是蓝图的名字，第二个参数是套路
 main = Blueprint('api', __name__)
 
+print('test rollback')
 
 @main.app_context_processor
 def inject_permissions():
